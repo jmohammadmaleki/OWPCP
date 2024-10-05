@@ -212,7 +212,7 @@ def OWPCP(X_tr, Y_tr, nbits):
 
     return D_model, history
 
-def logp_predict(Smi, Path_to_the_model):
+def logp_pred(Smi, Path_to_the_model):
   mfp_features = mfp_generator(Smi, 4, 2048)
   MACCS_features = MACCS_generator(Smi)
   features = concat_features(mfp_features, MACCS_features)
