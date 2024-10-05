@@ -18,8 +18,8 @@ SMILES: The SMILES (Simplified Molecular Input Line Entry System) representation
 logP: The experimentally measured LogP value.
 Example of dataset:
 
-|  Smiles | logP |
-| ---- | --- |
+|  Smiles | Experimental logP |
+| ---- | -- |
 | [H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12| 8.2 |
 |  CCN1CCc2nc(N)oc2CC1	| 0.05 |
 |  Nc1ccc(cc1)C(=N)N | -0.37 |
@@ -61,7 +61,7 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 
 ## Using the Trained Model
 > [!TIP]
-> To use the logp_predict function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
+> To use the logp_pred function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
 
 ```diff
 #Define the SMILES representation of the molecule to be predicted
