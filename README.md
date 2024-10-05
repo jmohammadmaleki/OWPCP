@@ -1,4 +1,5 @@
-> # $\textsf{{\color[rgb]{0.0, 0.0, 1.0}O}{\color[rgb]{0.1, 0.0, 0.9}}{\color[rgb]{0.2, 0.0, 0.8}W}{\color[rgb]{0.6, 0.0, 0.4}P}{\color[rgb]{0.8, 0.0, 0.2}C}{\color[rgb]{1.0, 0.0, 0.0}P~}}$:  A Deep Learning Model to Predict Octanol-Water Partition Coefficient 
+
+# $\textsf{{\color[rgb]{0.0, 0.0, 1.0}O}{\color[rgb]{0.1, 0.0, 0.9}}{\color[rgb]{0.2, 0.0, 0.8}W}{\color[rgb]{0.6, 0.0, 0.4}P}{\color[rgb]{0.8, 0.0, 0.2}C}{\color[rgb]{1.0, 0.0, 0.0}P~}}$:  A Deep Learning Model to Predict Octanol-Water Partition Coefficient 
 
 # Motivation 
 The octanol-water partition coefficient (LogP) is a crucial parameter in drug design, influencing a molecule's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties. Experimental determination of LogP is often costly and time-consuming, which has led to the development of computational models for its prediction. In this context, we present OWPCP, a deep learning-based framework that leverages combined molecular fingerprints to predict LogP values. The model learns a distinct set of representations for each type of descriptor, resulting in a robust feature space that enhances the predictive capability. A comprehensive evaluation of OWPCP demonstrated its superior performance compared to traditional computational methods and other machine learning models.
@@ -85,12 +86,10 @@ logp_pred(Smi, Path_to_the_model)
 ```
 
 > [!IMPORTANT]
-> $\color{Teal}{\textsf{The trained model can be accessed via the following link:}}$
-
+> $\color{Teal}{\textsf{The trained model can be accessed via the following link:}}$ <br />
 > [Trained Model](https://drive.google.com/file/d/1zsevz7eLPXsFI0-kfZp4qjR8-t0vPvN1/view?usp=sharing/)
 
 
 
-Here is a simple footnote[^1].
 
 
