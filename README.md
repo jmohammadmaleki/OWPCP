@@ -28,8 +28,9 @@ Example of dataset:
 ## Feature Extraction
 The input features for each molecule are generated using the following molecular descriptors:
 
-Morgan Fingerprints: These are circular fingerprints generated using RDKit with a specified radius and bit size.
-MACCS Keys: A predefined set of 167 chemical feature descriptors.
+- Morgan Fingerprints: These are circular fingerprints generated using RDKit with a specified radius and bit size.
+- MACCS Keys: A predefined set of 167 chemical feature descriptors.
+
 The features are concatenated into a single feature vector for each molecule, which is then used as the input to the model. The dataset is divided into training and testing sets, and an internal validation set is created for hyperparameter tuning.
 
 
