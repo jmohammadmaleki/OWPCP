@@ -65,7 +65,7 @@ To use the logp_predict function, you need to first import all the necessary mod
 
 Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
 
-*Specify the path to the pre-trained OWPC model*
+*Specify the path to the pre-trained OWPCP model*
 
 Path_to_the_model = "Path_to_the_model/model.h5.keras"
 
