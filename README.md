@@ -12,7 +12,7 @@ To run the OWPCP.py script, you need to have Python 3.10.12 or later installed. 
 - [Scikit-Learn](https://scikit-learn.org/stable/)
 # Data Files
 ## Description of Data
-The dataset used for this project is a CSV file named Full_lib.csv, containing molecular structures and their corresponding LogP values. Each row in the dataset represents a single molecule and is structured as follows:
+The dataset used for this project are CSV files named Train_Val_data.csv and Test_data.csv, containing molecular structures and their corresponding LogP values. Each row in the dataset represents a single molecule and is structured as follows:
 
 SMILES: The SMILES (Simplified Molecular Input Line Entry System) representation of the molecule.
 logP: The experimentally measured LogP value.
@@ -59,15 +59,17 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 - Training and Evaluation: Trains the model using the training set and evaluates it on the test set.
 
 ## Using the Trained Model
-If you want to use a pre-trained OWPC model to predict the LogP of a new molecule, you can use the following code snippet:
+To use the logp_predict function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
 
-Define the SMILES representation of the molecule
+*Define the SMILES representation of the molecule to be predicted*
+
 Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
 
-Define the path to the trained model
+*Specify the path to the pre-trained OWPC model*
+
 Path_to_the_model = "Path_to_the_model/model.h5.keras"
 
-
-# Example usage
+*Predict the LogP value using the logp_predict function*
 logp_predict(Smi, Path_to_the_model)
+
 
