@@ -113,6 +113,17 @@ def data_preparation_no_split(features, target_values, nbits):
 
 
     return X_tr,y_train
+
+def logp_pred(Smi, Path_to_the_model):
+  mfp_features = mfp_generator(Smi, 4, 2048)
+  MACCS_features = MACCS_generator(Smi)
+  features = concat_features(mfp_features, MACCS_features)
+  Target= data_preparation_no_split(features, nbits)
+  OWPCP = tf.keras.models.load_model(Path_to_the_model) 
+  Predicted_logP = OWPCP.predict(Target)
+  print(f'Predicted logP for {Smi[0]} is {Predicted_logP[0][0]}')
+
+
 ### Implementation of the MARSY model ###
 def model_builder(hp):
     MFP_l1_units = hp.Int('units_1', min_value = 512, max_value = 4096, step =258 )
@@ -212,14 +223,7 @@ def OWPCP(X_tr, Y_tr, nbits):
 
     return D_model, history
 
-def logp_pred(Smi, Path_to_the_model):
-  mfp_features = mfp_generator(Smi, 4, 2048)
-  MACCS_features = MACCS_generator(Smi)
-  features = concat_features(mfp_features, MACCS_features)
-  Target= data_preparation_no_split(features, nbits)
-  OWPCP = tf.keras.models.load_model(Path_to_the_model) 
-  Predicted_logP = OWPCP.predict(Target)
-  print(Predicted_logP)
+
 
 
 data = pd.read_csv('Full_lib.csv')
