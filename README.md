@@ -66,9 +66,9 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 #Define the SMILES representation of the molecule to be predicted
 Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
 #Specify the path to the pre-trained OWPCP model
-Path_to_the_model = "Path_to_the_model/model.h5.keras"
+Path_to_the_model = "/content/best_model.h5.keras"
 #Predict the LogP value using the logp_predict function
-logp_predict(Smi, Path_to_the_model)```
+logp_pred(Smi, Path_to_the_model)
 
 ```
 
