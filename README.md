@@ -1,8 +1,8 @@
 # OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient 
 # Motivation 
-The octanol-water partition coefficient (LogP) is a crucial parameter in drug design, influencing a molecule's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties. Experimental determination of LogP is often costly and time-consuming, which has led to the development of computational models for its prediction. In this context, we present OWPC, a deep learning-based framework that leverages combined molecular fingerprints and chemical feature descriptors to predict LogP values. The model learns a distinct set of representations for each type of descriptor, resulting in a robust feature space that enhances the predictive capability. A comprehensive evaluation of OWPC demonstrated its superior performance compared to traditional computational methods and other machine learning models.
+The octanol-water partition coefficient (LogP) is a crucial parameter in drug design, influencing a molecule's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties. Experimental determination of LogP is often costly and time-consuming, which has led to the development of computational models for its prediction. In this context, we present OWPCP, a deep learning-based framework that leverages combined molecular fingerprints and chemical feature descriptors to predict LogP values. The model learns a distinct set of representations for each type of descriptor, resulting in a robust feature space that enhances the predictive capability. A comprehensive evaluation of OWPCP demonstrated its superior performance compared to traditional computational methods and other machine learning models.
 # Requirements
-To run the OWPC.py script, you need to have Python 3.10.12 or later installed. Additionally, the following Python libraries are required:
+To run the OWPCP.py script, you need to have Python 3.10.12 or later installed. Additionally, the following Python libraries are required:
 - [Numpy](https://numpy.org/)
 - [Pandas](https://pandas.pydata.org/)
 - [Keras](https://keras.io/)
@@ -36,7 +36,7 @@ The features are concatenated into a single feature vector for each molecule, wh
 # Machine Learning Model
 ## Model Architecture
 
-The OWPC model consists of two main components:
+The OWPCP model consists of two main components:
 
 Feature Encoders: Separate encoders for Morgan Fingerprints and MACCS Keys learn compact representations of the input features.
 Decoder: A multi-layer neural network that combines the encoded features to predict the LogP value.
@@ -51,9 +51,9 @@ Decoder: Combines the outputs of both encoders and passes them through additiona
 A detailed diagram of the architecture can be found in the following figure.
 ![Presentation1](https://github.com/user-attachments/assets/9f8910ec-0475-4bb5-a6ae-4a56386640ed)
 
-## Running OWPC
-The OWPC.py file provided in this repository contains a basic implementation of the OWPC model. The script performs the following steps:
+## Running OWPCP
+The OWPCP.py file provided in this repository contains a basic implementation of the OWPCP model. The script performs the following steps:
 
 - Data Preparation: Reads the input dataset (Full_lib.csv) and extracts the features using the feature extraction functions.
-- Model Building: Creates the OWPC model using the defined architecture.
+- Model Building: Creates the OWPCP model using the defined architecture.
 - Training and Evaluation: Trains the model using the training set and evaluates it on the test set.
