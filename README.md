@@ -57,3 +57,17 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 - Data Preparation: Reads the input dataset (Full_lib.csv) and extracts the features using the feature extraction functions.
 - Model Building: Creates the OWPCP model using the defined architecture.
 - Training and Evaluation: Trains the model using the training set and evaluates it on the test set.
+
+## Using the Trained Model
+If you want to use a pre-trained OWPC model to predict the LogP of a new molecule, you can use the following code snippet:
+
+Define the SMILES representation of the molecule
+Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
+
+Define the path to the trained model
+Path_to_the_model = "Path_to_the_model/model.h5.keras"
+
+
+# Example usage
+logp_predict(Smi, Path_to_the_model)
+
