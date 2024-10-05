@@ -1,6 +1,6 @@
 # $\textsf{{\color[rgb]{0.0, 0.0, 1.0}O}{\color[rgb]{0.1, 0.0, 0.9}}{\color[rgb]{0.2, 0.0, 0.8}W}{\color[rgb]{0.6, 0.0, 0.4}P}{\color[rgb]{0.8, 0.0, 0.2}C}{\color[rgb]{1.0, 0.0, 0.0}P~}}$:  A Deep Learning Model to Predict Octanol-Water Partition Coefficient 
 # Motivation 
-The octanol-water partition coefficient (LogP) is a crucial parameter in drug design, influencing a molecule's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties. Experimental determination of LogP is often costly and time-consuming, which has led to the development of computational models for its prediction. In this context, we present OWPCP, a deep learning-based framework that leverages combined molecular fingerprints and chemical feature descriptors to predict LogP values. The model learns a distinct set of representations for each type of descriptor, resulting in a robust feature space that enhances the predictive capability. A comprehensive evaluation of OWPCP demonstrated its superior performance compared to traditional computational methods and other machine learning models.
+The octanol-water partition coefficient (LogP) is a crucial parameter in drug design, influencing a molecule's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties. Experimental determination of LogP is often costly and time-consuming, which has led to the development of computational models for its prediction. In this context, we present OWPCP, a deep learning-based framework that leverages combined molecular fingerprints to predict LogP values. The model learns a distinct set of representations for each type of descriptor, resulting in a robust feature space that enhances the predictive capability. A comprehensive evaluation of OWPCP demonstrated its superior performance compared to traditional computational methods and other machine learning models.
 # Requirements
 To run the OWPCP.py script, you need to have Python 3.10.12 or later installed. Additionally, the following Python libraries are required:
 - [Numpy](https://numpy.org/)
@@ -14,8 +14,9 @@ To run the OWPCP.py script, you need to have Python 3.10.12 or later installed. 
 ## Description of Data
 The dataset used for this project are CSV files named Train_Val_data.csv and Test_data.csv, containing molecular structures and their corresponding LogP values. Each row in the dataset represents a single molecule and is structured as follows:
 
-SMILES: The SMILES (Simplified Molecular Input Line Entry System) representation of the molecule.
-logP: The experimentally measured LogP value.
++ SMILES: The SMILES (Simplified Molecular Input Line Entry System) representation of the molecule.
++ logP: The experimentally measured LogP value.
+  
 Example of dataset:
 
 |  Smiles | Experimental logP |
@@ -31,7 +32,7 @@ The input features for each molecule are generated using the following molecular
 - Morgan Fingerprints: These are circular fingerprints generated using RDKit with a specified radius and bit size.
 - MACCS Keys: A predefined set of 167 chemical feature descriptors.
 
-The features are concatenated into a single feature vector for each molecule, which is then used as the input to the model. The dataset is divided into training and testing sets, and an internal validation set is created for hyperparameter tuning.
+The features are separate feature vectors for each molecule, which is then used as the input to the model. The dataset is divided into training and testing sets, and an internal validation set is created for hyperparameter tuning.
 
 
 # Machine Learning Model
@@ -39,25 +40,29 @@ The features are concatenated into a single feature vector for each molecule, wh
 
 The OWPCP model consists of two main components:
 
-Feature Encoders: Separate encoders for Morgan Fingerprints and MACCS Keys learn compact representations of the input features.
-Decoder: A multi-layer neural network that combines the encoded features to predict the LogP value.
+- Feature Encoders: Separate encoders for Morgan Fingerprints and MACCS Keys learn compact representations of the input features.
+- Decoder: A multi-layer neural network that combines the encoded features to predict the LogP value.
+
 The architecture is defined using the model_builder() function and optimized through a hyperparameter tuning process using Keras Tuner.
 
 ## Model Implementation
 The architecture of the model is as follows:
 
 Morgan Fingerprint Encoder: A series of dense layers that progressively reduce the dimensionality of the input.
+
 MACCS Key Encoder: Similar to the Morgan Fingerprint Encoder but adapted for the different input size of the MACCS keys.
+
 Decoder: Combines the outputs of both encoders and passes them through additional dense layers to predict the LogP value.
-A detailed diagram of the architecture can be found in the following figure.
+
+*A detailed diagram of the architecture can be found in the following figure.*
 ![Presentation1](https://github.com/user-attachments/assets/9f8910ec-0475-4bb5-a6ae-4a56386640ed)
 
 ## Running OWPCP
 The OWPCP.py file provided in this repository contains a basic implementation of the OWPCP model. The script performs the following steps:
 
-- Data Preparation: Reads the input dataset (Full_lib.csv) and extracts the features using the feature extraction functions.
+- Data Preparation: Reads the input dataset (Train_Val_data.csv) and extracts the features using the feature extraction functions.
 - Model Building: Creates the OWPCP model using the defined architecture.
-- Training and Evaluation: Trains the model using the training set and evaluates it on the test set.
+- Training and Evaluation: Trains the model using the training set and evaluates it on the validation set.
 
 ## Using the Trained Model
 > [!TIP]
@@ -72,6 +77,12 @@ Path_to_the_model = "/content/best_model.h5.keras"
 logp_pred(Smi, Path_to_the_model)
 
 ```
+
+> [!IMPORTANT]
+> $\color{Teal}{\textsf{The trained model can be accessed via the following link:}}$
+> [Trained Model](https://drive.google.com/file/d/1zsevz7eLPXsFI0-kfZp4qjR8-t0vPvN1/view?usp=sharing/)
+
+
 
 
 
