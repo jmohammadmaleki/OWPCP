@@ -20,9 +20,11 @@ Example of dataset:
 
 |  Smiles | logP |
 | ---- | --- |
-|  CCCO| -4.54 |
-|  CCO | 0.09  |
-|  CCC | 0.09  |
+| [H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12| 8.2 |
+|  CCN1CCc2nc(N)oc2CC1	| 0.05 |
+|  Nc1ccc(cc1)C(=N)N | -0.37 |
+
+
 ## Feature Extraction
 The input features for each molecule are generated using the following molecular descriptors:
 
