@@ -75,7 +75,8 @@ To use the logp_pred function, you need to first import all the necessary module
 > If you prefer not to download the model, use the link below to add a shortcut to your Google Drive (After clicking the link, click on the "Add Shortcut" button). Then, mount your Drive in Google Colab and load the model directly from there.
 
 
- ```diff
+
+ ```ruby
 #Define the SMILES representation of the molecule to be predicted
 Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
 #Specify the path to the pre-trained OWPCP model
