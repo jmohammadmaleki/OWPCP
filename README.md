@@ -68,7 +68,7 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 > [!TIP]
 > To use the logp_pred function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
 
-```diff
+ ```diff
 #Define the SMILES representation of the molecule to be predicted
 Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
 #Specify the path to the pre-trained OWPCP model
@@ -80,6 +80,7 @@ logp_pred(Smi, Path_to_the_model)
 
 > [!IMPORTANT]
 > $\color{Teal}{\textsf{The trained model can be accessed via the following link:}}$
+
 > [Trained Model](https://drive.google.com/file/d/1zsevz7eLPXsFI0-kfZp4qjR8-t0vPvN1/view?usp=sharing/)
 
 
