@@ -59,17 +59,17 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 - Training and Evaluation: Trains the model using the training set and evaluates it on the test set.
 
 ## Using the Trained Model
-To use the logp_predict function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
+> [!TIP]
+> To use the logp_predict function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
 
-*Define the SMILES representation of the molecule to be predicted*
-
+```diff
+#Define the SMILES representation of the molecule to be predicted
 Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
-
-*Specify the path to the pre-trained OWPCP model*
-
+#Specify the path to the pre-trained OWPCP model
 Path_to_the_model = "Path_to_the_model/model.h5.keras"
+#Predict the LogP value using the logp_predict function
+logp_predict(Smi, Path_to_the_model)```
 
-*Predict the LogP value using the logp_predict function*
-logp_predict(Smi, Path_to_the_model)
+```
 
 
