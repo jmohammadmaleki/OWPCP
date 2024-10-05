@@ -65,8 +65,11 @@ The OWPCP.py file provided in this repository contains a basic implementation of
 - Training and Evaluation: Trains the model using the training set and evaluates it on the validation set.
 
 ## Using the Trained Model
+To use the logp_pred function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
+
 > [!TIP]
-> To use the logp_pred function, you need to first import all the necessary modules and run all the functions defined in the OWPCP.py file. This ensures that all the required components, such as feature generators and data preparation functions, are available for use. Once everything is set up, you can use the following code snippet to predict the LogP value of a given molecule:
+> If you prefer not to download the model, use the link below to add a shortcut to your Google Drive (After clicking the link, click on the "Add Shortcut" button). Then, mount your Drive in Google Colab and load the model directly from there.
+
 
  ```diff
 #Define the SMILES representation of the molecule to be predicted
