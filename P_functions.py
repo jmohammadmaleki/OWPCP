@@ -110,8 +110,9 @@ def data_preparation_no_split(features, nbits):
 
     X_tr.append(mfp1)
     X_tr.append(MACCS1)
+    return X_tr
     
-def logp_predict(Smi, Path_to_the_model):
+def logp_pred(Smi, Path_to_the_model):
   mfp_features = mfp_generator(Smi, 4, 2048)
   MACCS_features = MACCS_generator(Smi)
   features = concat_features(mfp_features, MACCS_features)
@@ -120,4 +121,4 @@ def logp_predict(Smi, Path_to_the_model):
   Predicted_logP = OWPCP.predict(Target)
   print(Predicted_logP)
 
-    return X_tr
+
