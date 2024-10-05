@@ -78,7 +78,7 @@ To use the logp_pred function, you need to first import all the necessary module
 
  ```ruby
 #Define the SMILES representation of the molecule to be predicted
-Smi = ['[H]C1=C(Cl)C(Cl)=C(Cl)C2=C(Cl)C(Cl)=C(Cl)C(Cl)=C12']
+Smi = ['smiles_string']
 #Specify the path to the pre-trained OWPCP model
 Path_to_the_model = "/content/best_model.h5.keras"
 #Predict the LogP value using the logp_predict function
