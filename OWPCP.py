@@ -115,7 +115,6 @@ def data_preparation_no_split(features, target_values, nbits):
     return X_tr,y_train
 ### Implementation of the MARSY model ###
 def model_builder(hp):
-    #Encoder for Morgan Fingerprints
     MFP_l1_units = hp.Int('units_1', min_value = 512, max_value = 4096, step =258 )
     MFP_l2_units = hp.Int('units_2', min_value = 512, max_value = 4096, step =258 )
     MACCSK_l1_units = hp.Int('units_3', min_value = 512, max_value = 4096, step =258 )
@@ -133,7 +132,7 @@ def model_builder(hp):
     MACCSK_drop = hp.Float('drop_2', min_value = 0, max_value = 0.5, step = 0.05 )
     out_drop = hp.Float('drop_3', min_value = 0, max_value = 0.5, step = 0.05 )
 
-
+    #Encoder for Morgan Fingerprints
     tuple_vec = Input(shape=(nbits,))
     MFP = Dense(MFP_l1_units, activation=MFP_l1_activation, kernel_initializer='he_normal')(tuple_vec)
     MFP = Dropout(MFP_drop)(MFP)
@@ -171,7 +170,7 @@ def model_builder(hp):
     return p_model
 
     
-def MOWPCP(X_tr, Y_tr, nbits):
+def OWPCP(X_tr, Y_tr, nbits):
     #Encoder for mfp
     tuple_vec = Input(shape=(nbits,))
     MFP = Dense(int(best_hps.get('units_1')), activation=best_hps.get('activation_1'), kernel_initializer='he_normal')(tuple_vec)
@@ -242,48 +241,5 @@ tuner.search(training_set, y_train, epochs = 20, batch_size = 256, validation_sp
 
 
 
-#TUNED MODEL
-def MOWPCP(X_tr, Y_tr, nbits, epc):
-    #Encoder for mfp
-    tuple_vec = Input(shape=(nbits,))
-    tpl = Dense(2834, activation='elu', kernel_initializer='he_normal')(tuple_vec)
-    tpl = Dropout(0.1)(tpl)
-    out_tpl1 = Dense(2834, activation='linear')(tpl)
-    model_tpl = Model(tuple_vec, out_tpl1)
-
-    tpl_inp = Input(shape=(nbits,))
-    out_tpl = model_tpl(tpl_inp)
-
-    #Encoder for MACCS keys
-    pair_vec = Input(shape=(167,))
-    pair1 = Dense(2318, activation='tanh', kernel_initializer='he_normal')(pair_vec)
-    pair1 = Dropout(0.3)(pair1)
-    out_p1 = Dense(1802, activation = 'relu')(pair1)
-    model_pair = Model(pair_vec, out_p1)
-
-    pair_inp = Input(shape=(167,))
-    out_pair = model_pair(pair_inp)
-
-    #Decoder to predict the synergy score and the single drug response of each drug
-    concatenated_tpl = keras.layers.concatenate([out_pair, out_tpl])
-    out_c1 = Dense(1802, activation='relu')(concatenated_tpl)
-    out_c1 = Dropout(0.25)(out_c1)
-    out_c1 = Dense(2576, activation="tanh")(out_c1)
-    out_c1 = Dense(1, activation='linear', name="Predictor_LogP")(out_c1)
-
-    multitask_model = Model(inputs= [tpl_inp, pair_inp], outputs =[out_c1])
-
-    multitask_model.compile(optimizer= tf.keras.optimizers.Adamax(learning_rate=float(0.0001),
-                                                    beta_1=0.9, beta_2=0.999, epsilon=1e-07),
-                                                    loss={'Predictor_LogP': 'mse'},
-                                                    metrics=['mse', 'mae', keras.metrics.RootMeanSquaredError(), tf.keras.metrics.R2Score()])
-
-    model_checkpoint = ModelCheckpoint('best_model.h5.keras', monitor='val_loss', save_best_only=True, mode='min')
-
-    history = multitask_model.fit(X_tr, Y_tr, batch_size=128, epochs=epc, verbose=1, 
-                                  validation_split=0.2, callbacks=[model_checkpoint])   
-    return multitask_model, history
-
-
 epochs = 100
-trained_MOWPCP, history = MOWPCP(training_set, y_train, nbits, epochs)
+trained_MOWPCP, history = OWPCP(training_set, y_train, nbits, epochs)
