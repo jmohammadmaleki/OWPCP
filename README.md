@@ -91,6 +91,6 @@ logp_pred(Smi, Path_to_the_model)
 
 
 
-
+Here is a simple footnote[^1].
 
 
