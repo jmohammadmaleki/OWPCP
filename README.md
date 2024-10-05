@@ -1,4 +1,5 @@
-# $\textsf{{\color[rgb]{0.0, 0.0, 1.0}O}{\color[rgb]{0.1, 0.0, 0.9}}{\color[rgb]{0.2, 0.0, 0.8}W}{\color[rgb]{0.6, 0.0, 0.4}P}{\color[rgb]{0.8, 0.0, 0.2}C}{\color[rgb]{1.0, 0.0, 0.0}P~}}$:  A Deep Learning Model to Predict Octanol-Water Partition Coefficient 
+> # $\textsf{{\color[rgb]{0.0, 0.0, 1.0}O}{\color[rgb]{0.1, 0.0, 0.9}}{\color[rgb]{0.2, 0.0, 0.8}W}{\color[rgb]{0.6, 0.0, 0.4}P}{\color[rgb]{0.8, 0.0, 0.2}C}{\color[rgb]{1.0, 0.0, 0.0}P~}}$:  A Deep Learning Model to Predict Octanol-Water Partition Coefficient 
+
 # Motivation 
 The octanol-water partition coefficient (LogP) is a crucial parameter in drug design, influencing a molecule's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties. Experimental determination of LogP is often costly and time-consuming, which has led to the development of computational models for its prediction. In this context, we present OWPCP, a deep learning-based framework that leverages combined molecular fingerprints to predict LogP values. The model learns a distinct set of representations for each type of descriptor, resulting in a robust feature space that enhances the predictive capability. A comprehensive evaluation of OWPCP demonstrated its superior performance compared to traditional computational methods and other machine learning models.
 # Requirements
@@ -45,6 +46,11 @@ The OWPCP model consists of two main components:
 
 The architecture is defined using the model_builder() function and optimized through a hyperparameter tuning process using Keras Tuner.
 
+![Presentation1](https://github.com/user-attachments/assets/9f8910ec-0475-4bb5-a6ae-4a56386640ed)
+<p align="center">
+$\color{Gray}{\textsf{A detailed diagram of the  model architecture}}$
+</p>
+
 ## Model Implementation
 The architecture of the model is as follows:
 
@@ -53,9 +59,6 @@ Morgan Fingerprint Encoder: A series of dense layers that progressively reduce t
 MACCS Key Encoder: Similar to the Morgan Fingerprint Encoder but adapted for the different input size of the MACCS keys.
 
 Decoder: Combines the outputs of both encoders and passes them through additional dense layers to predict the LogP value.
-
-*A detailed diagram of the architecture can be found in the following figure.*
-![Presentation1](https://github.com/user-attachments/assets/9f8910ec-0475-4bb5-a6ae-4a56386640ed)
 
 ## Running OWPCP
 The OWPCP.py file provided in this repository contains a basic implementation of the OWPCP model. The script performs the following steps:
