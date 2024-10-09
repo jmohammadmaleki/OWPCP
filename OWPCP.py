@@ -124,7 +124,7 @@ def logp_pred(Smi, Path_to_the_model):
   print(f'Predicted logP for {Smi[0]} is {Predicted_logP[0][0]}')
 
 
-### Implementation of the MARSY model ###
+### Implementation of the OWPCP model ###
 def model_builder(hp):
     MFP_l1_units = hp.Int('units_1', min_value = 512, max_value = 4096, step =258 )
     MFP_l2_units = hp.Int('units_2', min_value = 512, max_value = 4096, step =258 )
@@ -144,11 +144,11 @@ def model_builder(hp):
     out_drop = hp.Float('drop_3', min_value = 0, max_value = 0.5, step = 0.05 )
 
     #Encoder for Morgan Fingerprints
-    tuple_vec = Input(shape=(nbits,))
-    MFP = Dense(MFP_l1_units, activation=MFP_l1_activation, kernel_initializer='he_normal')(tuple_vec)
+    MfingerP_vec = Input(shape=(nbits,))
+    MFP = Dense(MFP_l1_units, activation=MFP_l1_activation, kernel_initializer='he_normal')(MfingerP_vec)
     MFP = Dropout(MFP_drop)(MFP)
     out_MFP1 = Dense(MFP_l2_units, activation=MFP_l2_activation)(MFP)
-    model_MFP = Model(tuple_vec, out_MFP1)
+    model_MFP = Model(MfingerP_vec, out_MFP1)
 
     MFP_inp = Input(shape=(nbits,))
     out_MFP = model_MFP(MFP_inp)
@@ -157,8 +157,8 @@ def model_builder(hp):
     MACCSK_vec = Input(shape=(167,))
     MACCSK1 = Dense(MACCSK_l1_units, activation=MACCSK_l1_activation, kernel_initializer='he_normal')(MACCSK_vec)
     MACCSK1 = Dropout(MACCSK_drop)(MACCSK1)
-    out_p1 = Dense(MACCSK_l2_units, activation = MACCSK_l2_activation)(MACCSK1)
-    model_MACCSK = Model(MACCSK_vec, out_p1)
+    out_MACCS_1 = Dense(MACCSK_l2_units, activation = MACCSK_l2_activation)(MACCSK1)
+    model_MACCSK = Model(MACCSK_vec, out_MACCS_1)
 
     MACCSK_inp = Input(shape=(167,))
     out_MACCSK = model_MACCSK(MACCSK_inp)
@@ -183,11 +183,11 @@ def model_builder(hp):
     
 def OWPCP(X_tr, Y_tr, nbits):
     #Encoder for mfp
-    tuple_vec = Input(shape=(nbits,))
-    MFP = Dense(int(best_hps.get('units_1')), activation=best_hps.get('activation_1'), kernel_initializer='he_normal')(tuple_vec)
+    MfingerP_vec = Input(shape=(nbits,))
+    MFP = Dense(int(best_hps.get('units_1')), activation=best_hps.get('activation_1'), kernel_initializer='he_normal')(MfingerP_vec)
     MFP = Dropout(best_hps.get('drop_1'))(MFP)
     out_MFP1 = Dense(int(best_hps.get('units_2')), activation=best_hps.get('activation_2'))(MFP)
-    model_MFP = Model(tuple_vec, out_MFP1)
+    model_MFP = Model(MfingerP_vec, out_MFP1)
 
     MFP_inp = Input(shape=(nbits,))
     out_MFP = model_MFP(MFP_inp)
@@ -196,8 +196,8 @@ def OWPCP(X_tr, Y_tr, nbits):
     MACCSK_vec = Input(shape=(167,))
     MACCSK1 = Dense(int(best_hps.get('units_3')), activation=best_hps.get('activation_3'), kernel_initializer='he_normal')(MACCSK_vec)
     MACCSK1 = Dropout(best_hps.get('drop_2'))(MACCSK1)
-    out_p1 = Dense(int(best_hps.get('units_4')), activation = best_hps.get('activation_4'))(MACCSK1)
-    model_MACCSK = Model(MACCSK_vec, out_p1)
+    out_MACCS_1 = Dense(int(best_hps.get('units_4')), activation = best_hps.get('activation_4'))(MACCSK1)
+    model_MACCSK = Model(MACCSK_vec, out_MACCS_1)
 
     MACCSK_inp = Input(shape=(167,))
     out_MACCSK = model_MACCSK(MACCSK_inp)
