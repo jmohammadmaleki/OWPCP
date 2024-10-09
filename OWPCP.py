@@ -225,7 +225,7 @@ def OWPCP(X_tr, Y_tr, nbits):
 
 
 
-
+#Read, Load, and prepare data
 data = pd.read_csv('Full_lib.csv')
 smiles_list = data['Smiles'].tolist()
 LogP_list = data['logP'].tolist()
@@ -241,6 +241,7 @@ MACCS_features = MACCS_generator(smiles_list)
 features = concat_features(mfp_features, MACCS_features)
 training_set,y_train, testing_set, y_test = data_preparation(features, train_size, nbits)
 
+#Tune the HPs
 tuner = kt.Hyperband(model_builder,
                      objective = "val_mse",
                      max_epochs = 10,
@@ -251,6 +252,6 @@ stop_early = tf.keras.callbacks.EarlyStopping(monitor = "val_mse", patience = 5)
 tuner.search(training_set, y_train, epochs = 20, batch_size = 256, validation_split = 0.111, callbacks = [stop_early])
 
 
-
+#Train the model with Tuned HPs
 epochs = 100
 trained_MOWPCP, history = OWPCP(training_set, y_train, nbits, epochs)
