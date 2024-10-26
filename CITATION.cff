@@ -1,12 +1,9 @@
-message: "If you use this software, please cite it as below."
-authors:
-- family-names: "Maleki"
-  given-names: "Mohammadjavad"
-- family-names: "Zahiri"
-  given-names: "Sobhan"
-title: "OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient"
-doi: 10.48550/arXiv.2410.18118
-date-released: 2017-12-18
-url: "https://arxiv.org/abs/2410.18118"
-
-
+@article{OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient,
+  author = {Maleki, Mohammadjavad and Zahiri, Sobhan},
+  doi = {10.48550/arXiv.2410.18118},
+  journal = {arXiv},
+  month = {10},
+  number = {1},
+  title = {{{OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient}},
+  year = {2024}
+}
