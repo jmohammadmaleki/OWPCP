@@ -90,7 +90,9 @@ logp_pred(Smi, Path_to_the_model)
 > $\color{Teal}{\textsf{The trained model can be accessed via the following link:}}$ <br />
 > [Trained Model](https://drive.google.com/file/d/1zsevz7eLPXsFI0-kfZp4qjR8-t0vPvN1/view?usp=sharing/)
 
+ If you use this model, please cite it as follows:
 
-
-
+```
+M. Maleki and S. Zahiri, “OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient,” 2024. [Online]. Available: https://arxiv.org/abs/2410.18118
+```
 
