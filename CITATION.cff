@@ -1,9 +1,12 @@
-@misc{maleki2024owpcpdeeplearningmodel,
-      title={OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient}, 
-      author={Mohammadjavad Maleki and Sobhan Zahiri},
-      year={2024},
-      eprint={2410.18118},
-      archivePrefix={arXiv},
-      primaryClass={physics.chem-ph},
-      url={https://arxiv.org/abs/2410.18118}, 
-}
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Maleki"
+  given-names: "Mohammadjavad"
+- family-names: "Zahiri"
+  given-names: "Sobhan"
+title: "OWPCP: A Deep Learning Model to Predict Octanol-Water Partition Coefficient"
+doi: 10.48550/arXiv.2410.18118
+date-released: 2017-12-18
+url: "https://arxiv.org/abs/2410.18118"
+
+
